@@ -5,10 +5,7 @@ var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
-var __require = typeof require !== "undefined" ? require : (x) => {
-  throw new Error('Dynamic require of "' + x + '" is not supported');
-};
-var __commonJS = (cb, mod) => function __require2() {
+var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var __reExport = (target, module2, desc) => {
@@ -1046,7 +1043,7 @@ var require_react_development = __commonJS({
           }
           return dispatcher.useContext(Context, unstable_observedBits);
         }
-        function useState(initialState) {
+        function useState2(initialState) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useState(initialState);
         }
@@ -1634,7 +1631,7 @@ var require_react_development = __commonJS({
         exports2.useMemo = useMemo;
         exports2.useReducer = useReducer;
         exports2.useRef = useRef;
-        exports2.useState = useState;
+        exports2.useState = useState2;
         exports2.version = ReactVersion;
       })();
     }
@@ -20428,7 +20425,11 @@ var import_react_dom = __toModule(require_react_dom());
 // src/App.jsx
 var import_react = __toModule(require_react());
 function App() {
-  return /* @__PURE__ */ import_react.default.createElement("div", null, "Hello World!");
+  const [count, setCount] = (0, import_react.useState)(0);
+  return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("span", null, count), /* @__PURE__ */ import_react.default.createElement("button", {
+    type: "button",
+    onClick: () => setCount(count + 1)
+  }, "Increment!"));
 }
 
 // src/index.jsx
